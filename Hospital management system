@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Management System</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f8f9fa; }
+        h2 { text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; background: white; }
+        th, td { border: 1px solid black; padding: 10px; text-align: left; }
+        th { background-color: #007BFF; color: white; }
+        form { display: flex; flex-direction: column; width: 300px; margin: 20px auto; padding: 15px; background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input, button { margin: 8px 0; padding: 10px; }
+        button { background-color: #28a745; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #218838; }
+    </style>
+</head>
+<body>
+    <body style="background-image: url(C:/Users/Anuprabha/Downloads/ho.jpg); background-size: cover; background-position: center;">
+    <h2>Hospital Management System</h2>
+
+    <form action="/add_patient" method="post">
+        <h3>Patient Details</h3>
+        <label>Name:</label>
+        <input type="text" name="name" required>
+        <label>Age:</label>
+        <input type="number" name="age" required>
+        <label>Disease:</label>
+        <input type="text" name="disease" required>
+        <label>Admitted Patient ID:</label>
+        <input type="number" name="admitted_patient_id" required>
+        
+        <h3>Hospital Details</h3>
+        <label>Hospital Name:</label>
+        <input type="text" name="hospital_name" required>
+        <label>Location:</label>
+        <input type="text" name="hospital_location" required>
+
+        <button type="submit">Add Patient</button>
+    </form>
+
+    <h3>Patient Records</h3>
+    <table>
+        <tr>
+            <th>Admitted Patient ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Disease</th>
+            <th>Hospital Name</th>
+            <th>Location</th>
+            <th>Action</th>
+        </tr>
+        {% for patient in patients %}
+        <tr>
+            <td>{{ patient[0] }}</td>
+            <td>{{ patient[1] }}</td>
+            <td>{{ patient[2] }}</td>
+            <td>{{ patient[3] }}</td>
+            <td>{{ patient[4] }}</td>
+            <td>{{ patient[5] }}</td>
+            <td><a href="/delete/{{ patient[0] }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
